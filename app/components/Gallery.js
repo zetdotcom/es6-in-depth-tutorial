@@ -8,9 +8,20 @@ class Gallery extends Component {
           .props
           .items
           .map((item, index) => {
-            let {title} = item.volumeInfo;
+            let alternate = "http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg";
+            let {title, imageLinks, infoLink} = item.volumeInfo;
             return (
-              <div key={index}>{title}
+              <div key={index} className="book">
+
+                <img
+                  src={imageLinks !== undefined
+                  ? imageLinks.thumbnail
+                  : alternate}
+                  alt="book image"
+                  className="book-img"/>
+                <div className="book-text">
+                  {title}
+                </div>
               </div>
             )
           })
